@@ -1,18 +1,16 @@
 #!/data/data/com.termux/files/usr/bin/python
 import argparse
+import json
+import os
 import random
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
-from urllib.parse import urlparse, urljoin, parse_qs, urlencode
+from urllib.parse import urlparse, parse_qs, urlencode
 
 import requests
 from colorama import Fore, Style, init
 from tqdm import tqdm
-
-# Local imports
-from core.discovery import ParameterDiscover
-from core.payload_manager import PayloadManager
 
 init(autoreset=True)
 
@@ -27,15 +25,37 @@ BANNER = f"""
  ░ ▒  ▒   ░▒ ░ ▒░  ░ ▒ ▒░   ▒ ░ ░    ▒   ▒▒ ░  ░▒ ░ ▒░
  ░ ░  ░   ░░   ░ ░ ░ ░ ▒    ░   ░    ░   ▒     ░░   ░ 
    ░       ░         ░ ░      ░          ░  ░   ░     
-{Fore.YELLOW}Termux Advanced Bug Bounty Scanner v3.1
+{Fore.YELLOW}Termux Advanced Bug Bounty Scanner v3.2
 {Fore.RED}=============================================
 """
+
+class PayloadManager:
+    def __init__(self):
+        self.payload_dir = "payloads"
+        self.payloads = self._load_payloads()
+    
+    def _load_payloads(self):
+        payload_db = {}
+        try:
+            if not os.path.exists(self.payload_dir):
+                print(f"{Fore.RED}[!] Payload folder '{self.payload_dir}' not found.")
+                sys.exit(1)
+            with open(f"{self.payload_dir}/ssrf/internal.json") as f:
+                payload_db['ssrf'] = json.load(f)
+            for vuln_type in ['xss', 'sqli']:
+                with open(f"{self.payload_dir}/{vuln_type}.json") as f:
+                    payload_db[vuln_type] = json.load(f)
+        except Exception as e:
+            print(f"{Fore.RED}Error loading payloads: {str(e)}{Style.RESET_ALL}")
+            sys.exit(1)
+        return payload_db
+
+    def get_payloads(self, vulnerability: str) -> list:
+        return self.payloads.get(vulnerability, [])
 
 class AdvancedScanner:
     def __init__(self, target_url, config=None):
         self.target = target_url
-        
-        # Default configuration
         self.default_config = {
             'max_threads': 5,
             'rate_limit': 1.2,
@@ -45,12 +65,9 @@ class AdvancedScanner:
                 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.6367.118 Mobile Safari/537.36'
             ]
         }
-        
-        # Merge user config with defaults
         self.config = self.default_config.copy()
         if config:
             self.config.update(config)
-
         self.session = requests.Session()
         self.session.headers.update({
             'User-Agent': self._random_user_agent(),
@@ -70,14 +87,7 @@ class AdvancedScanner:
     def discover_parameters(self):
         try:
             response = self.session.get(self.target, timeout=self.config['timeout'])
-            self.parameters = ParameterDiscover.from_response(response.text)
-            
-            # Add parameters from URL
-            url_params = ParameterDiscover.from_url(self.target)
-            self.parameters.extend(url_params)
-            
-            # Remove duplicates
-            self.parameters = list(set(self.parameters))
+            self.parameters = list(parse_qs(urlparse(self.target).query).keys())
             return True
         except Exception as e:
             print(f"{Fore.RED}[-] Parameter discovery failed: {str(e)}{Style.RESET_ALL}")
@@ -90,6 +100,7 @@ class AdvancedScanner:
         modules = {
             'xss': self._scan_xss,
             'sqli': self._scan_sqli,
+            'ssrf': self._scan_ssrf,
             'all': self._scan_all
         }
         
@@ -98,12 +109,13 @@ class AdvancedScanner:
             scanner_func()
             return True
         except KeyboardInterrupt:
-            print(f"\n{Fore.RED}[!] Scan interrupted by user{Style.RESET_ALL}")
+            print(f"\n{Fore.RED}[!] Scan interrupted{Style.RESET_ALL}")
             return False
 
     def _scan_all(self):
         self._scan_xss()
         self._scan_sqli()
+        self._scan_ssrf()
 
     def _scan_xss(self):
         self._run_scan('xss', self._check_xss)
@@ -111,10 +123,13 @@ class AdvancedScanner:
     def _scan_sqli(self):
         self._run_scan('sqli', self._check_sqli)
 
+    def _scan_ssrf(self):
+        self._run_scan('ssrf', self._check_ssrf)
+
     def _run_scan(self, vuln_type, check_func):
         payloads = self.payload_manager.get_payloads(vuln_type)
         if not payloads:
-            print(f"{Fore.YELLOW}[!] No payloads found for {vuln_type}{Style.RESET_ALL}")
+            print(f"{Fore.YELLOW}[!] No {vuln_type.upper()} payloads found{Style.RESET_ALL}")
             return
 
         total_tests = len(payloads) * len(self.parameters)
@@ -155,7 +170,7 @@ class AdvancedScanner:
                 }
         except Exception as e:
             if self.config.get('verbose'):
-                print(f"{Fore.YELLOW}[!] Error testing {param}: {str(e)}{Style.RESET_ALL}")
+                print(f"{Fore.YELLOW}[!] XSS test error: {str(e)}{Style.RESET_ALL}")
         return None
 
     def _check_sqli(self, param, payload):
@@ -173,13 +188,31 @@ class AdvancedScanner:
                 }
         except Exception as e:
             if self.config.get('verbose'):
-                print(f"{Fore.YELLOW}[!] Error testing {param}: {str(e)}{Style.RESET_ALL}")
+                print(f"{Fore.YELLOW}[!] SQLi test error: {str(e)}{Style.RESET_ALL}")
         return None
 
-    def _inject_payload(self, param, payload):
+    def _check_ssrf(self, param, payload):
+        test_url = self._inject_payload(param, payload['payload'])
+        try:
+            response = self.session.get(test_url, timeout=self.config['timeout'])
+            if self._detect_ssrf(response):
+                return {
+                    'type': 'SSRF',
+                    'param': param,
+                    'payload': payload['payload'],
+                    'url': test_url,
+                    'confidence': 90,
+                    'evidence': "SSRF indicators detected"
+                }
+        except Exception as e:
+            if self.config.get('verbose'):
+                print(f"{Fore.YELLOW}[!] SSRF test error: {str(e)}{Style.RESET_ALL}")
+        return None
+
+    def _inject_payload(self, param, payload_str):
         parsed = urlparse(self.target)
         query = parse_qs(parsed.query)
-        query[param] = payload
+        query[param] = payload_str
         return parsed._replace(query=urlencode(query, doseq=True)).geturl()
 
     def _analyze_reflection(self, response, payload):
@@ -198,70 +231,50 @@ class AdvancedScanner:
         
         evidence = []
         if detection['body']:
-            evidence.append("Payload reflected in response body")
+            evidence.append("Reflected in body")
         if detection['header']:
-            evidence.append("Payload reflected in headers")
+            evidence.append("Reflected in headers")
             
         detection['evidence'] = " | ".join(evidence)
         return detection
 
     def _detect_sqli(self, response):
         sqli_errors = [
-            'SQL syntax',
-            'mysql_fetch',
-            'syntax error',
-            'unclosed quotation',
-            'pg_query'
+            'SQL syntax', 'mysql_fetch', 'syntax error',
+            'unclosed quotation', 'pg_query', 'ORA-'
         ]
         return any(error in response.text for error in sqli_errors)
 
+    def _detect_ssrf(self, response):
+        ssrf_indicators = [
+            "EC2 Metadata", "root:x:0:0", "AWS_SECRET",
+            "Metadata Service", "Internal Server Error",
+            "Connection refused", "Redis"
+        ]
+        return any(indicator in response.text for indicator in ssrf_indicators)
+
 def main():
     print(BANNER)
-    
-    parser = argparse.ArgumentParser(
-        description=f"{Fore.GREEN}Advanced Vulnerability Scanner for Termux{Style.RESET_ALL}",
-        formatter_class=argparse.RawTextHelpFormatter
-    )
-    
-    parser.add_argument('-u', '--url', required=True, help="Target URL")
-    parser.add_argument('-m', '--module', choices=['xss', 'sqli', 'all'], 
-                      default='all', help="Scan modules")
-    parser.add_argument('-o', '--output', help="Output file (JSON/HTML)")
-    parser.add_argument('-p', '--proxy', help="Proxy URL (e.g., http://127.0.0.1:8080)")
-    parser.add_argument('-v', '--verbose', action='store_true', help="Show detailed output")
-    parser.add_argument('-t', '--threads', type=int, default=5, 
-                      help="Maximum concurrent threads (default: 5)")
+    parser = argparse.ArgumentParser(description="Bug Bounty Scanner")
+    parser.add_argument("-u", "--url", required=True, help="Target URL with parameters")
+    parser.add_argument("-m", "--module", choices=["xss", "sqli", "ssrf", "all"], default="all", help="Scan module")
+    parser.add_argument("--proxy", help="Optional HTTP proxy (e.g., http://127.0.0.1:8080)")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
     
     args = parser.parse_args()
-    
+
     config = {
-        'max_threads': args.threads,
-        'verbose': args.verbose,
-        'proxy': args.proxy
+        "proxy": args.proxy,
+        "verbose": args.verbose
     }
+
+    scanner = AdvancedScanner(args.url, config=config)
+    success = scanner.scan(module=args.module)
     
-    scanner = AdvancedScanner(args.url, config)
-    
-    print(f"{Fore.MAGENTA}[*] Target URL: {args.url}{Style.RESET_ALL}")
-    print(f"{Fore.BLUE}[*] Using {args.threads} threads with {args.module} module{Style.RESET_ALL}")
-    
-    if scanner.scan(args.module):
-        print(f"\n{Fore.CYAN}[+] Scan completed. Found {len(scanner.vulnerabilities)} vulnerabilities{Style.RESET_ALL}")
-        
-        if scanner.vulnerabilities:
-            for vuln in scanner.vulnerabilities:
-                print(f"""
-{Fore.YELLOW}=== {vuln['type']} Vulnerability ==={Style.RESET_ALL}
-{Fore.WHITE}Parameter: {vuln['param']}
-{Fore.CYAN}Payload: {vuln['payload']}
-{Fore.GREEN}Confidence: {vuln['confidence']}%
-{Fore.BLUE}Evidence: {vuln['evidence']}
-{Fore.MAGENTA}URL: {vuln['url']}
-{'-'*60}""")
-        else:
-            print(f"{Fore.YELLOW}[!] No vulnerabilities found{Style.RESET_ALL}")
-    else:
-        print(f"{Fore.RED}[-] Scan failed{Style.RESET_ALL}")
+    if success:
+        print(f"\n{Fore.GREEN}[+] Scan completed. Found {len(scanner.vulnerabilities)} potential issues.{Style.RESET_ALL}")
+        for vuln in scanner.vulnerabilities:
+            print(f"{Fore.YELLOW}Type: {vuln['type']} | Param: {vuln['param']} | Payload: {vuln['payload']}\nURL: {vuln['url']}\nEvidence: {vuln['evidence']}\nConfidence: {vuln['confidence']}%{Style.RESET_ALL}\n")
 
 if __name__ == "__main__":
     main()
