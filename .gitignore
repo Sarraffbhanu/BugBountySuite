@@ -14,3 +14,4 @@ venv/
 # Local files
 *.log
 *.db
+*.save
